@@ -1,6 +1,7 @@
-const port=process.env.PORT ? Number(process.env.PORT) : 3000;
 const express = require("express");
 const app = express();
+const cors=require('cors');
+app.use(cors());
 const path = require("path");
 const hbs = require('handlebars')
 const session = require('express-session');
@@ -8,6 +9,7 @@ const flash = require('connect-flash');
 const passport = require('passport');
 const remark=require('remark');
 const html = require('remark-html');
+const port=process.env.PORT ? Number(process.env.PORT) : 3000;
 
 
 require('dotenv').config();
