@@ -8,9 +8,8 @@
     ],
     "routes":[
         {
-            "src":"(.*)",
-            "dest":"/app.js",
-            "Methods":["GET","POST","PUT","PATCH","DELETE"]
+            "src":"/(.*)",
+            "dest":"/"
         }
     ]
 }
