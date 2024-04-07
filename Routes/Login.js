@@ -14,8 +14,6 @@ router.get('/TerminarSessao',(req,res)=>{
     });
     req.flash('success_msg',"Sessão terminado com Sucesso.")
     res.redirect('/');
-})
-
-
+});
 
 module.exports=router;

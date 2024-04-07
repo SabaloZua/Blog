@@ -74,7 +74,7 @@ exports.Cadastro = async (req, res) => {
                 senha = hash;
                 let sqlquery = `insert into tb_usuario (t_nome,t_senha,t_email,n_idcurso,t_descricao,t_ultima_vez_online,n_id_tipousuario)
                                         values
-                                        ($1,$2,$3,$4,$5,NULL,2);`
+                                        ($1,$2,$3,$4,$5,NULL,1);`
 
                 await client.query(sqlquery, [nome, senha, email, curso, bio], (err, result) => {
                     if (!err) {
