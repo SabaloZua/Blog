@@ -5,7 +5,7 @@ const multer=require('multer');
 const path=require('path');
 const {logado}=require('../helpers/Logado')
 
-let CaminhoPastaIMG=path.join(__dirname, '..', 'public', 'Imgs');
+let CaminhoPastaIMG=path.join(__dirname, '..', 'public', 'Imagens');
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, CaminhoPastaIMG);
@@ -26,7 +26,7 @@ router.get('/post/:nome/:titulo',Controller.getpost);
 router.post("/publicar",logado,Controller.publicar);
 
 router.post('/upload', upload.single('image'),(req,res)=>{
-    res.json({ filepath: `/Imgs/${req.file.filename}` });
+    res.json({ filepath: `/Imagens/${req.file.filename}` });
 })
 
 router.post('/Comentario/:id',Controller.Coment);
