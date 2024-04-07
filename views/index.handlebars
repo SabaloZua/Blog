@@ -1,0 +1,46 @@
+<!-- Corpo da pagina principal -->
+<main class="flex-fill">
+  <div class="container">
+       {{>_msg}}
+    <ol>
+      {{#each posts}}
+      <li>
+        <div class="row rp">
+          <div class="col-12 col-md-10">
+            <div class="card post ">
+              <h5 class="card-title"><a href="/postagens/post/{{t_nome}}/{{this.t_titulo_post}}">{{this.t_titulo_post}}</a>
+              </h5>
+              <p class="card-text">0 estrelas - {{this.count}} comentários - {{this.t_nome}} · {{ getTimeAgo this.t_data}}</p>
+            </div>
+          </div>
+        </div>
+      </li>
+      {{/each}}
+      
+    </ol>
+  </div>
+
+
+</main>
+
+<div class="col-12 col-md-6 offset-md-3">
+  <div class="d-flex justify-content-center">
+  {{#if totalPages}}
+  <nav class="d-inline-block mx-3">
+    <ul class="pagination pagination-sm my-0">
+    {{#if (gt page 1)}}
+        <li class="page-item"><a class="page-link" href="/?page={{subtract page 1}}">Anterior</a></li>
+      {{/if}}
+      {{#each (range 1 totalPages)}}
+        <li class="page-item{{#if (eq this page)}} active{{/if}}"><a class="page-link" href="/?page={{this}}">{{this}}</a></li>
+      {{/each}}
+      {{#if (lt page totalPages)}}
+        <li class="page-item"><a class="page-link" href="/?page={{add page 1}}">Próximo</a></li>
+      {{/if}}
+
+    </ul>
+    </nav>
+    {{/if}}
+</div>
+  
+</div>

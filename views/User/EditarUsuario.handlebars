@@ -1,0 +1,43 @@
+
+   
+<!-- corpo  -->
+      <main class="flex-fill">
+
+            <div class="container">
+                <div class="row">
+
+                 <h1 class="titulos">Editar Perfil</h1>
+
+                    <form class="col-12 col-md-6 offset-md-3 " method="post" action="/Usuario/actulizar/{{usuario.n_id_usuario}}">            
+                        <div class="form-row flex-column">
+
+                          <div class="form-group ">
+                            <label for="inputNome">Nome</label>
+                            <input type="text" class="form-control" id="inputNome" placeholder="Nome" autofocus value="{{usuario.t_nome}}" name="nome" required >
+                          </div>
+                          
+                           
+                           <div class="form-group">
+                                <label for="inputEmail">Email</label>
+                                <input type="email" class="form-control" id="inputEmail" placeholder="Digite aqui o Email" value="{{usuario.t_email}}" name="email" required>
+                              </div>
+
+                              <div class="form-group ">
+                                <label for="inputMorada">Biografia</label>
+                               <textarea name="dsc" class="form-control" placeholder="Fale um pouco sobre Ti" required>{{usuario.t_descricao}}</textarea>
+                              </div>
+                            
+                        </div>
+
+                     
+
+                        <button type="submit" class="btn btn-dark mt-2">Actualizar</button>
+                      </form>
+
+                </div>
+                
+            </div>
+        </main>
+
+  <!-- Roda-pé -->
+ 

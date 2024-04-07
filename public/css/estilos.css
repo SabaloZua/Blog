@@ -1,0 +1,195 @@
+
+html {
+    overflow-x: hidden !important;
+    
+  } 
+body {
+    position: relative !important;
+    overflow-x: hidden !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji" !important;
+    
+}
+body,html{
+    height: 100vh;
+    transition:0.1s
+}
+/* --------------------------------------dark mod---------------------------------------------------------------------- */
+input[type="checkbox"]{
+    display: none;
+}
+
+.bi-sun{
+    display: none;
+}
+.dark input,
+.dark textarea,
+.dark textarea::placeholder,
+.dark input::placeholder{
+    background-color: #0D1117 !important;
+    color: #E6EDF3 !important;
+}
+.dark cursor{
+    color: #E6EDF3 ;
+}
+.dark,
+.dark footer,
+.dark footer a
+ {
+    background-color: #0D1117 !important;
+    color: #E6EDF3 !important;
+}
+
+.dark .navbar a{
+    color: #E6EDF3 !important;
+}
+
+.dark .bi-moon{
+    display: none;
+}
+
+.dark .bi-sun{
+    display: block;
+}
+.dark .dropdown-menu a{
+    color: black !important;
+}
+.dark .card,
+.dark .card a{
+    background-color: #0D1117;
+    color: #E6EDF3 ;
+}
+
+/* ------------------------------------ --------------------------------------------------------------------------------*/
+
+.page-link{
+    border: none;
+    color: #0D1117;
+    border-bottom: 1px solid seashell;
+    font-size: 17px;
+}
+
+form{
+    margin-top: 30px;
+    /* text-align: center; */
+}
+
+form input{
+    margin-bottom: 10px;
+}
+
+a{
+    /* margin-bottom: 1px; */
+    text-decoration: none;
+    color: black;
+}
+.textos{
+    display: flex;
+    justify-content: space-around;
+   margin-top: 30px;
+   font-weight: bold;
+}
+form input[type="submit"]{
+    margin-top: 5px;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    padding: 5px;
+}
+
+.campo_form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+.campo_form label{
+    margin-bottom: .5rem;
+}
+.campo_form input{
+    margin-bottom: 5px;
+}
+i.social{
+    font-size: 4rem;
+    text-align: center;
+}
+
+
+.logo{
+  display: flex;
+  justify-content: center;
+}
+.botoes_form{
+    display: flex;
+    justify-content: space-around;
+
+}
+footer{
+    margin-top: 2rem;
+}
+
+.wrapper{
+    min-height: 100vh; 
+ }
+ body{
+    min-width: 372px;
+ }
+
+ .titulos{
+    text-align: center;
+    margin-bottom:25px;
+
+ }
+.form-row{
+    display: flex;
+    gap: 10px;
+}
+.form-row input{
+    width: 350px;
+}
+.inputs{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.post{
+    border:none;
+  margin-bottom: 4px;
+  margin-top: 4px;
+  
+    line-height: 1.5 !important;
+}
+.card-title{
+    margin-bottom: 1px;
+}
+ ol >li{
+
+    /* margin-left: 100px; */
+    /* border: 1px solid black; */
+    font-weight: bold;
+}
+li p{
+    font-weight: lighter!important;
+}
+
+
+ /* .form-floating input{
+    width: 450px;
+ } */
+.close{
+    border-radius:17px ;
+    width: 25px;
+    border: none;
+    background-color: #656D76;
+    color: #fff;
+}
+
+
+@media screen and (min-width:1280px){
+    ol >li{
+        margin-left: 100px;
+    }
+ 
+}

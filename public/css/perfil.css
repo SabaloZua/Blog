@@ -1,0 +1,11 @@
+.dark  .active {
+    background-color: #0D1117 !important;
+    color: #E6EDF3 !important; 
+   
+}
+.dark .nav-tabs a{
+    color:#E6EDF3 !important;
+}
+.nav-tabs a {
+    border-bottom:none!important;
+}

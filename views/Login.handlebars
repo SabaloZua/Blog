@@ -1,0 +1,45 @@
+
+<div class="d-flex flex-column wrapper justify-content-center">
+    
+        <main>
+
+        <div class="container">
+       {{>_msg}}    
+          
+            <div class="row justify-content-center">
+               
+            
+          <form action="/Login" method="post" class="col-sm-10 col-md-8 col-lg-6 ">
+     <div class="card p-5">
+        <i class="bi-person-circle social"></i>
+            <h1 class="titulos">LOGIN</h1>
+            <div class="form-floating  mb-3">
+            <input type="text" class="form-control" autofocus placeholder="" name="username" maxlength="100">
+            <label for="">Nome de Usuario</label>
+            </div>
+
+            <div class="form-floating  mb-3">
+                <input type="password" class="form-control" placeholder="" name="password" maxlength="50" autocapitalize="off">
+                <label for="">Senha</label>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input type="checkbox" class="form-check-input" id="chL" style="display: block;">
+                    <label for= "chL" class="form-check-label">Lembrar de mim</label>
+                    </div>
+                        <button class="btn btn-lg btn-dark " type="submit">
+                           
+                            Entrar
+                            </button>
+                        <p class="mt-3">Ainda não tem uma conta? Cadastre-se <a href="/Usuario/Cadastrar" style="color: blue;">click aqui</a></p>
+        </div>
+          </form>   
+   
+          
+            </div>
+         
+
+        </div>
+    </main>
+
+</div>

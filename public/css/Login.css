@@ -1,0 +1,9 @@
+.dark .card {
+    border-color:#E6EDF3  ;
+}
+.navbar{
+    display: none !important;
+}
+footer{
+    display: none !important;
+}

@@ -1,0 +1,114 @@
+address a{
+    background-color: #DDF4FF ;
+    border: 1px solid #DDF4FF ;
+    border-radius: 5px;
+    margin-right: 10px;
+    padding-inline: 10px;
+    text-align: center;
+    color: blue  !important;
+}
+/*--------------------------------------------------- Dark mod--------------------------------------------------------- */
+.dark address a{
+    background-color:#121D2F !important;
+    border: 1px solid#121D2F !important ;
+}
+
+.dark .text-body, 
+.dark .estrelar > label{
+    color: #E6EDF3 !important ;
+}
+
+.dark .EasyMDEContainer{
+    background-color: #0D1117 !important;
+    color: #E6EDF3 !important ;
+}
+.dark .editor-toolbar button i{
+    color: #E6EDF3 !important;   
+}
+.dark .editor-toolbar button.active, 
+.dark .editor-toolbar button:hover{
+    background-color: #0D1117 !important;
+    
+}
+
+.dark .CodeMirror, 
+.dark .editor-preview{
+    background-color: #0D1117 ;
+    color: #E6EDF3 !important; 
+}
+.dark .cardC  pre{
+    color: #0D1117 !important;
+}
+.dark .cardC blockquote p,
+.dark .cardCom blockquote  p{
+    color: #30363D;
+   border-left:#30363D solid 5px;
+}
+.dark .cardC a{
+    text-decoration: underline !important;
+    color: blue;
+}
+
+.dark .cardC  pre,
+.dark .cardCom pre{
+    background-color:gray !important;  
+    border-radius: 4px ;
+}
+/* ------------------------------------------------------------------------------ -------------------------------------*/
+.cardC{
+    border: none;
+
+    border-bottom: 1px solid gainsboro;
+    font-size: large;
+}
+.cardC a{
+    text-decoration: underline !important;
+    color: blue;
+}
+.cardC blockquote p,
+.cardCom blockquote  p{
+    color: #D0D7DE;
+   border-left: #D0D7DE solid 5px;
+}
+.cardC blockquote p::first-letter,
+.cardCom blockquote  p::first-letter{
+   margin-left: 8px;
+}
+.cardCom{
+    border: none;
+    border-top: 1px solid gainsboro;
+}
+.cardT{
+    border:none;
+    border-bottom: 1px solid gainsboro;
+}
+.cabpost{
+    display: flex;
+    justify-content: flex-start;
+}
+p{
+    
+    margin-top: 5px;
+}
+img{
+    max-width: 60% !important;
+}
+
+.cardC  pre,
+.cardCom pre{
+    background-color: #E6EDF3 !important;  
+    border-radius: 4px ;
+}
+.estrelar{
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    font-size: 20px;
+    font-weight: bold;
+}
+@media screen and (max-width:800px){
+   p >img{
+     max-width: 100% !important;
+        
+    }
+}

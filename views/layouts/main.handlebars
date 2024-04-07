@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    {{!-- <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css"> --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    {{!-- <link rel="stylesheet" href="/bootstrap-i/bootstrap-icons.min.css"> --}}
+    <link rel="stylesheet" href="/css/estilos.css">
+    
+   {{!- Atributo style  é um objecto que armazena um array de objectos Ex: style:  [ {link:estilosDinamico.css}] !-}}
+    {{!- nesse caso ele vai criar links css dinamincamente de acordo com o valor do objecto Link !-}}
+    {{! como ficará <link rel="stylesheet" href="/css/estilosDinamico}}
+    {{#each style}}
+    <link rel="stylesheet" href="/{{Link}}">
+    {{/each}}
+    <title>Blog IMEL</title>
+</head>
+
+<body>
+
+<div class="d-flex flex-column wrapper">
+    {{#if (eq user.n_id_tipousuario 2)}}
+    {{>_navbarADM}}
+    {{else}}
+    {{>_navbar}}
+
+    {{/if}}
+    
+    {{{body}}}
+    
+    {{>_footer}}
+</div>
+
+
+    {{!-- Rotina para criar os links js dinamicamente !--}}
+    <script src="/scripts/modo_escuro.js"></script>
+    {{#each script}}
+    <script src="/{{linkScrpt}}"></script>
+    {{/each}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js" integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{!-- <script src="/bootstrap/js/bootstrap.bundle.js"></script> --}}
+</body>
+
+</html>
