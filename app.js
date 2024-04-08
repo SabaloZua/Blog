@@ -13,7 +13,7 @@ const port=process.env.PORT ? Number(process.env.PORT) : 3000;
 
 require('dotenv').config();
 require('./Modules/PassaporConfig')(passport);
-app.use(cors({credentials: true}));
+app.use(cors({credentials: true, origin: 'https://blog-imel.vercel.app/',}));
 app.use(express.json());
 app.use(express.urlencoded({
     extended: false
