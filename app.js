@@ -25,7 +25,7 @@ app.use(express.urlencoded({
 const oneDay = 24 * 60 * 60 * 1000; // 1 dia em milissegundos
 const expires = new Date(Date.now() + oneDay);
 app.use(session({
-    store:new pgSession({conString:process.env.POSTGRES_URL}),
+    store:new pgSession({conString:process.env.POSTGRES_URL,tableName: 'sessions',}),
     secret: process.env.SENHA_Sessao,
     resave: false,
     saveUninitialized: false,
