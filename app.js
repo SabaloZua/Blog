@@ -22,8 +22,9 @@ app.use(express.urlencoded({
 
 app.use(session({
     secret: process.env.SENHA_Sessao,
-    resave: true,
-    saveUninitialized: true
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60000 }
 }));
 
 // Configuração do Passport.js
