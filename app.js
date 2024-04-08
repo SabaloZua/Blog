@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const cors=require('cors')
 const hbs = require('handlebars')
 const session = require('express-session');
 const flash = require('connect-flash');
@@ -12,6 +13,7 @@ const port=process.env.PORT ? Number(process.env.PORT) : 3000;
 
 require('dotenv').config();
 require('./Modules/PassaporConfig')(passport);
+app.use(cors({credentials: true}));
 app.use(express.json());
 app.use(express.urlencoded({
     extended: false
@@ -26,6 +28,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie:{
+        secure:true,
         expires: expires
     }
 }));
