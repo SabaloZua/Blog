@@ -23,9 +23,10 @@ app.use(express.urlencoded({
 
 app.use(session({
     store: new pgSession({
-        conString:process.env.POSTGRES_URL 
+        conString:process.env.POSTGRES_URL,
+        tableName: 'session',
     }),
-    tableName: 'session', 
+     
     secret: process.env.SENHA_Sessao,
     resave: false,
     saveUninitialized: false
