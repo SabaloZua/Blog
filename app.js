@@ -7,6 +7,7 @@ const flash = require('connect-flash');
 const passport = require('passport');
 const remark=require('remark');
 const html = require('remark-html');
+const pgSession = require('connect-pg-simple')(session);
 const port=process.env.PORT ? Number(process.env.PORT) : 3000;
 
 
@@ -21,6 +22,8 @@ app.use(express.urlencoded({
 //configuração da sessao
 
 app.use(session({
+    store: new pgSession({connectionString: process.env.POSTGRES_URL}),
+    tableName: 'session', 
     secret: process.env.SENHA_Sessao,
     resave: false,
     saveUninitialized: false
