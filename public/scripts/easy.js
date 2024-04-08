@@ -109,7 +109,7 @@ const easyMDE = new EasyMDE(
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())
+            .then(result => result.json())
             .then(result => {
                 onSuccess(result.filepath);
             })

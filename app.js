@@ -19,12 +19,15 @@ app.use(express.urlencoded({
 
 //CONFIGURAÇÕES
 //configuração da sessao
-
+const oneDay = 24 * 60 * 60 * 1000; // 1 dia em milissegundos
+const expires = new Date(Date.now() + oneDay);
 app.use(session({
     secret: process.env.SENHA_Sessao,
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 60000 }
+    cookie:{
+        expires: expires
+    }
 }));
 
 // Configuração do Passport.js
