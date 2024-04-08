@@ -23,7 +23,7 @@ app.use(express.urlencoded({
 app.use(session({
     secret: process.env.SENHA_Sessao,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: { maxAge: 60000 }
 }));
 
