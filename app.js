@@ -7,6 +7,7 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const passport = require('passport');
 const remark=require('remark');
+const pgSession = require('connect-pg-simple')(session);
 const html = require('remark-html');
 const port=process.env.PORT ? Number(process.env.PORT) : 3000;
 
@@ -24,6 +25,7 @@ app.use(express.urlencoded({
 const oneDay = 24 * 60 * 60 * 1000; // 1 dia em milissegundos
 const expires = new Date(Date.now() + oneDay);
 app.use(session({
+    store:new pgSession({conString:process.env.POSTGRES_URL}),
     secret: process.env.SENHA_Sessao,
     resave: false,
     saveUninitialized: false,
