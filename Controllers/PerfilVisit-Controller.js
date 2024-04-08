@@ -7,7 +7,7 @@ exports.PaginalPerfil = async (req, res) => {
 
     res.render('PerfilVisit/Perfil', {
         style: [
-            { Link: "css/Perfil.css" },],
+            { Link: "css/perfil.css" },],
         Usuario: DadosUsuario.rows[0],
     });
 }
@@ -23,7 +23,7 @@ exports.PaginalPerfilComentario = async (req, res) => {
 
     res.render('PerfilVisit/PerfilComentarios', {
         style: [
-            { Link: "css/Perfil.css" },],
+            { Link: "css/perfil.css" },],
         Usuario: DadosUsuario.rows[0],
         Comentario: ComentariosUsuario.rows
     });
@@ -46,7 +46,7 @@ exports.PaginalPublica = async (req, res) => {
 
     res.render('PerfilVisit/PerfilPublicacoes', {
         style: [
-            { Link: "css/Perfil.css" },],
+            { Link: "css/perfil.css" },],
         Usuario: DadosUsuario.rows[0],
         posts,
         totalPages,
