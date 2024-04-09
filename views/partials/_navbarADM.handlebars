@@ -1,6 +1,6 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-3 ">
     <div class="container">
-                 <a  class="navbar-brand" href="/"><strong>Blog IMEL</strong></a>
+                 <a  class="navbar-brand" href="/admin"><strong>Blog IMEL</strong></a>
                      <button class="navbar-toggler" type="button"  data-bs-toggle="collapse" 
                         data-bs-target=".navbar-collapse">
                         <span class="navbar-toggler-icon"></span>
@@ -21,7 +21,7 @@
 
                       <li class="nav-item" title="Criar uma publicação">
                             <a href="#" class="nav-link  text-white">
-                            ADMIN
+                           ADMIN
                             </a>
                          </li>
                       
@@ -80,12 +80,11 @@
         </button>
       </div>
  <div class="modal-body">
-    <form action="">
+   <form action="/postagens/pesq" method="get">
       <div class="form-group">
-      <input type="search" class="form-control" style="background-color: #ffff !important; color: black !important;">
-      <button class="btn btn-outline-dark">Buscar</button>
+      <input type="search" class="form-control" name="busca" style="background-color: #ffff !important; color: black !important;">
+      <button class="btn btn-outline-dark" type="submit">Buscar</button>
       </div>
-    </form>
   </div>
     </div>
   </div>

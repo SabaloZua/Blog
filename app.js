@@ -76,6 +76,7 @@ const Login = require('./Routes/Login');
 const Perfil = require('./Routes/Perfil');
 const PerfilVist = require('./Routes/PerfilVisit');
 const Admin=require('./Routes/Admin');
+const Termos=require('./Routes/Termos');
 // modulos
 const client = require("./Modules/db");
 const conversorHora = require('./Modules/Data');
@@ -130,7 +131,6 @@ app.get('/', async (req, res) => {
     const posts = await Pots.getPosts(page);
     const totalPosts = await Pots.getTotalPosts(); // Função para obter o total de posts
     const totalPages = Math.ceil(totalPosts / 20); //  exibir 20 posts por página
-    
     res.render('index', { posts, page, totalPages })
 
 });
@@ -142,6 +142,7 @@ app.use('/Usuario', Usuario);
 app.use('/Login', Login);
 app.use('/Perfil', Perfil);
 app.use('/perfil', PerfilVist);
+app.use('/Termos-uso',Termos);
 app.use('/admin',Admin);
 
 app.listen(port, () => {
