@@ -26,19 +26,19 @@ exports.Paginapostadd = (req, res) => {
 
 // controller para bucar um post especifico
 exports.getpost = async (req, res) => {
-   const nomeUser =  req.params.nome;
-   const titulo =  req.params.titulo;
+ 
+   const id=req.params.id
    let sqlqueryPost = `select tbp.n_id_post,tbp.t_titulo_post,tbp.t_conteudo_post,tbp.t_data,tbu.t_nome
                             from tb_post as tbp
                      inner join tb_usuario as tbu on tbu.n_id_usuario=tbp.n_id_usuario
-                         where tbp.t_titulo_post=$1 and tbu.t_nome=$2`;
+                         where tbp.n_id_post=$1`;
 
    let sqlqueryComent = `select tbc.t_conteudo_post,tbc.t_data,tbu.t_nome from tb_comentario tbc 
                          inner join tb_post as tbp on tbp.n_id_post=tbc.n_id_post
                          inner join tb_usuario as tbu on tbu.n_id_usuario=tbc.n_id_usuario
                 where  tbc.n_id_post=$1`
 
-   const DadosPost = await client.query(sqlqueryPost, [titulo, nomeUser]);
+   const DadosPost = await client.query(sqlqueryPost, [id]);
 
    const DadosComent = await client.query(sqlqueryComent, [ await DadosPost.rows[0].n_id_post]);
 

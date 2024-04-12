@@ -1,9 +1,9 @@
 const conecao = require('../Modules/db');
 
 exports.PaginalPerfil = async (req, res) => {
-    const nome =  await req.params.nome;
+    const nome =  req.params.nome;
 
-    const DadosUsuario = await conecao.query('select t_descricao,t_nome, t_data_cadastro from tb_usuario where t_nome=$1', [nome]);
+    const DadosUsuario = await conecao.query('select t_descricao, t_nome, t_data_cadastro from tb_usuario where t_nome=$1', [nome]);
 
     res.render('PerfilVisit/Perfil', {
         style: [

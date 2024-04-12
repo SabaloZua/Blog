@@ -20,7 +20,7 @@ const upload = multer({ storage: storage });
 router.get('/add',logado,Controller.Paginapostadd);
 
 // Rota que busca uma unica potagem 
-router.get('/post/:nome/:titulo',Controller.getpost);
+router.get('/post/:id',Controller.getpost);
 
 //Rota que adiciona uma  publucação
 router.post("/publicar",logado,Controller.publicar);
