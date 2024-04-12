@@ -26,8 +26,8 @@ exports.Paginapostadd = (req, res) => {
 
 // controller para bucar um post especifico
 exports.getpost = async (req, res) => {
-   const nomeUser = await req.params.nome;
-   const titulo = await req.params.titulo;
+   const nomeUser =  req.params.nome;
+   const titulo =  req.params.titulo;
    let sqlqueryPost = `select tbp.n_id_post,tbp.t_titulo_post,tbp.t_conteudo_post,tbp.t_data,tbu.t_nome
                             from tb_post as tbp
                      inner join tb_usuario as tbu on tbu.n_id_usuario=tbp.n_id_usuario
@@ -40,7 +40,7 @@ exports.getpost = async (req, res) => {
 
    const DadosPost = await client.query(sqlqueryPost, [titulo, nomeUser]);
 
-   const DadosComent = await client.query(sqlqueryComent, [DadosPost.rows[0].n_id_post]);
+   const DadosComent = await client.query(sqlqueryComent, [ await DadosPost.rows[0].n_id_post]);
 
 
    // Renderizar o template Handlebars com o conteúdo HTML

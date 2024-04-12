@@ -17,6 +17,7 @@ exports.PaginalPerfilComentario = async (req, res) => {
     const nome = req.params.nome;
 
     const DadosUsuario = await conecao.query('select t_nome from tb_usuario where t_nome=$1', [nome]);
+   
     const ComentariosUsuario = await conecao.query(`select tbc.t_conteudo_post,tbc.t_data from tb_comentario as tbc 
                                                     inner join tb_usuario as tbu on tbu.n_id_usuario=tbc.n_id_usuario
                                                     where tbu.t_nome=$1`, [nome]);
