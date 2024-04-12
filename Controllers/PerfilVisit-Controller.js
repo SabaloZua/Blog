@@ -1,15 +1,15 @@
 const conecao = require('../Modules/db');
 
 exports.PaginalPerfil = async (req, res) => {
-    const nome =  req.params.nome;
+    let nome =  req.params.nome;
 
-    const DadosUsuario = await conecao.query('select t_descricao, t_nome, t_data_cadastro from tb_usuario where t_nome=$1', [nome]);
+    let DadosUsuario = await conecao.query('select t_descricao, t_nome, t_data_cadastro from tb_usuario where t_nome=$1', [nome]);
 
     res.render('PerfilVisit/Perfil', {
         style: [
             { Link: "css/perfil.css" },],
-        Usuario: await DadosUsuario.rows[0],
-    });
+            Usuario: await DadosUsuario.rows[0],
+        });
 }
 
 //Controller que leva a pagina do perfil onde é mostrado todos o comentarios do usuario
@@ -17,16 +17,11 @@ exports.PaginalPerfilComentario = async (req, res) => {
     const nome = req.params.nome;
 
     const DadosUsuario = await conecao.query('select t_nome from tb_usuario where t_nome=$1', [nome]);
-   
-    const ComentariosUsuario = await conecao.query(`select tbc.t_conteudo_post,tbc.t_data from tb_comentario as tbc 
-                                                    inner join tb_usuario as tbu on tbu.n_id_usuario=tbc.n_id_usuario
-                                                    where tbu.t_nome=$1`, [nome]);
 
     res.render('PerfilVisit/PerfilComentarios', {
         style: [
             { Link: "css/perfil.css" },],
         Usuario: DadosUsuario.rows[0],
-        Comentario: ComentariosUsuario.rows
     });
 }
 
@@ -37,8 +32,8 @@ exports.PaginalPublica = async (req, res) => {
     //Obtém o número da página atual da query string da URL. Se não estiver presente, assume 1 como padrão
     const page = parseInt(req.query.page) || 1;
     //Obtém os posts para a página atual
-    const posts = await getPosts(page,nome);
-    const totalPosts = await getTotalPosts(nome); // Função para obter o total de posts
+    const posts = getPosts(page,nome);
+    const totalPosts =  getTotalPosts(nome); // Função para obter o total de posts
     const totalPages = Math.ceil(totalPosts / 3); //  exibir 5 posts por página
 
    

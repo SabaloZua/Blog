@@ -35,9 +35,20 @@
                         <p class="me-3"> Total de estrelas⭐: 0 </p>
                     </div>
                    
+                         <div class="row">
+                    {{#if Usuario..t_descricao}}
                     <div class="card-body mt-4 ms-md-3 d-flex justify-content-center justify-content-md-start " style="border: 1px solid snow; border-radius: 5px;">
                         <p>{{Usuario.t_descricao}}</p>
                     </div>
+
+                    {{else}}
+                    <div class="col-12 text-center mt-5">
+                      <button class="btn  btn-primary">Adicionar Bibiografia</button>
+                    </div>
+
+                    {{/if}}
+                </div>
+
 
                  
                 </div>

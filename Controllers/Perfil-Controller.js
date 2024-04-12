@@ -5,7 +5,7 @@ exports.PaginalPerfil = async (req, res) => {
     const userId = req.session.passport.user;
     let id = userId;
 
-    const DadosUsuario = await conecao.query('select t_descricao,t_nome from tb_usuario where n_id_usuario=$1', [id]);
+    const DadosUsuario = await conecao.query('select t_nome, t_descricao,  from tb_usuario where n_id_usuario=$1', [id]);
 
     res.render('UsuarioPerfil/Perfil', {
         style: [
@@ -19,13 +19,11 @@ exports.PaginalPerfilComentario = async (req, res) => {
     let id = userId;
 
     const DadosUsuario = await conecao.query('select t_nome from tb_usuario where n_id_usuario=$1', [id]);
-    const ComentariosUsuario = await conecao.query('select * from tb_comentario  where n_id_usuario=$1', [id]);
-
+    
     res.render('UsuarioPerfil/PerfilComentarios', {
         style: [
             { Link: "css/perfil.css" },],
         Usuario: DadosUsuario.rows[0],
-        Comentario: ComentariosUsuario.rows
     });
 }
 
@@ -35,12 +33,12 @@ exports.PaginalPublica = async (req, res) => {
     //Obtém o número da página atual da query string da URL. Se não estiver presente, assume 1 como padrão
     const page = parseInt(req.query.page) || 1;
     //Obtém os posts para a página atual
-    const posts = await getPosts(page,userId);
-    const totalPosts = await getTotalPosts(userId); // Função para obter o total de posts
+    const posts = getPosts(page,userId);
+    const totalPosts =  getTotalPosts(userId); // Função para obter o total de posts
     const totalPages = Math.ceil(totalPosts / 4); //  exibir 5 posts por página
 
     let sql2 = 'select t_nome from tb_usuario where n_id_usuario=$1';
-    const DadosUsuario = await conecao.query(sql2, [userId]);
+    const DadosUsuario =  await conecao.query(sql2, [userId]);
 
     res.render('UsuarioPerfil/PerfilPublicacoes', {
         style: [
