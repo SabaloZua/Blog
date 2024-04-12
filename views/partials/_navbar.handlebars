@@ -33,13 +33,13 @@
                             </a>
                          </li>
                       
-
+                        {{#if user}}
                          <li class="nav-item" title="Perfil">
                             <div class="dropdown">
                             <a href="#" class="nav-link dropdown-toggle text-white"  data-bs-toggle="dropdown" role="button">
                              <i class="bi bi-person-circle" style="font-size:24px; line-height:24px;"></i>
                             </a>
-                            {{#if user}}
+                          
                             <ul class="dropdown-menu">
                                 <li><a href="/Perfil" class="dropdown-item">Perfil</a></li>
                                 <li><a href="/Usuario/Editar" class="dropdown-item">Editar Perfil</a></li>
@@ -48,17 +48,39 @@
                                   <div class="dropdown-item">
                                     <input type="checkbox" id="ch">
                                     <label for="ch">
-                                      <i class="bi bi-moon" style="font-size:22px; line-height:22px; cursor: pointer;"></i>
-                                      <i class="bi bi-sun" style="font-size:22px; line-height:22px; cursor: pointer;"></i>
+                                      <i class="bi bi-moon" style="font-size:18px; line-height:18px; cursor: pointer;"> Escuro</i>
+                                      <i class="bi bi-sun" style="font-size:18px; line-height:18px; cursor: pointer;"> Claro</i>
                                     </label>
                                   </div>
                                 </li>
                             </ul>
-                            {{else}}
+                        
 
-                            {{/if}}
+                           
                         </div>
                          </li>
+                         {{else}}
+                        <li class="nav-item" title="Perfil">
+                            <div class="dropdown">
+                            <a href="#" class="nav-link dropdown-toggle text-white"  data-bs-toggle="dropdown" role="button">
+                             Tema
+                            </a>
+                          
+                            <ul class="dropdown-menu">
+                                <li>
+                                  <div class="dropdown-item">
+                                    <input type="checkbox" id="ch">
+                                    <label for="ch">
+                                      <i class="bi bi-moon" style="font-size:18px; line-height:18px; cursor: pointer;"> Escuro</i>
+                                      <i class="bi bi-sun" style="font-size:18px; line-height:18px; cursor: pointer;"> Claro</i>
+                                    </label>
+                                  </div>
+                                </li>
+                            </ul>
+                        </div>
+                         </li>
+
+                          {{/if}}
                          <li class="nav-item" title="Pesquisar">
                           <a href="" class="nav-link  text-white" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">
                            <i class="bi bi-search" style="font-size:24px; line-height:24px;" ></i>

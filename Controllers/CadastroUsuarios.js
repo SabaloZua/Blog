@@ -42,15 +42,20 @@ exports.Cadastro = async (req, res) => {
     let bio = req.body.dsc;
     let curso = req.body.cursos;
     let senha2 = req.body.senhausuario2;
+    let Data_hoje = new Date();
+    const nomesUsuario= await client.query('select t_nome from tb_usuario where t_nome=$1',[nome]);
 
     if (nome == "" || senha == "" ||  email =="" || curso == "") {
         erros.push('Um dos campos não foi preênchido')
     }
     if (senha != senha2) {
-        erros.push('As senhas  digitadas são diferentes' )
+        erros.push('As senhas  digitadas são diferentes' );
     }
     if(senha.length<8){
-        erros.push('Senha muito Curta! A sua senha tem de ter no mínimo 8 caracteres')
+        erros.push('Senha muito Curta! A sua senha tem de ter no mínimo 8 caracteres');
+    }
+    if(nomesUsuario.rows.length > 0){
+        erros.push('Já existe um Usuario com o mesmo Nome Tente um outro');
     }
     if (erros.length > 0) {
       
@@ -72,11 +77,11 @@ exports.Cadastro = async (req, res) => {
                 }
 
                 senha = hash;
-                let sqlquery = `insert into tb_usuario (t_nome,t_senha,t_email,n_idcurso,t_descricao,t_ultima_vez_online,n_id_tipousuario)
+                let sqlquery = `insert into tb_usuario (t_nome,t_senha,t_email,n_idcurso,t_descricao,t_data_cadastro,n_id_tipousuario)
                                         values
-                                        ($1,$2,$3,$4,$5,NULL,1);`
+                                        ($1,$2,$3,$4,$5,$6,1);`
 
-                await client.query(sqlquery, [nome, senha, email, curso, bio], (err, result) => {
+                await client.query(sqlquery, [nome, senha, email, curso, bio,Data_hoje], (err, result) => {
                     if (!err) {
                         req.flash('success_msg', 'Cadastro efectuado com Sucesso. Visite o seu email deixamos uma mensagem especial para si');
                         res.redirect('/');

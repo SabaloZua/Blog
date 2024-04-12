@@ -9,3 +9,10 @@
 .nav-tabs a {
     border-bottom:none!important;
 }
+.quadradoVerde{
+    width: 20px;
+    height: 20px;
+    border: solid 1px #2DA44E;
+    background-color: #2DA44E;
+    border-radius: 5px;
+}
