@@ -1,14 +1,14 @@
 const conecao = require('../Modules/db');
 
 exports.PaginalPerfil = async (req, res) => {
-    const nome = req.params.nome;
+    const nome =  await req.params.nome;
 
     const DadosUsuario = await conecao.query('select t_descricao,t_nome, t_data_cadastro from tb_usuario where t_nome=$1', [nome]);
 
     res.render('PerfilVisit/Perfil', {
         style: [
             { Link: "css/perfil.css" },],
-        Usuario: DadosUsuario.rows[0],
+        Usuario: await DadosUsuario.rows[0],
     });
 }
 
