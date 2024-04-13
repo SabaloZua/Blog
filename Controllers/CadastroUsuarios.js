@@ -36,7 +36,7 @@ exports.Paginaeditar = async (req, res) => {
 exports.Cadastro = async (req, res) => {
 
     var erros = [];
-    let nome = req.body.nomeusario;
+    let nome = req.body.nomeusario.replace(/\s+/g, '');
     let senha = req.body.senhausuario;
     let email = req.body.emailusuario;
     let bio = req.body.dsc;
@@ -104,7 +104,7 @@ exports.Cadastro = async (req, res) => {
 // Controller que actuliza os dados do usuario 
 exports.Actulizar = async (req, res) => {
     const id = req.params.id;
-    const nomeU = req.body.nome;
+    const nomeU = req.body.nome.replace(/\s+/g, '');
     const email = req.body.email;
     const dsc = req.body.dsc;
     if (nomeU != "" && email != "" && dsc != "") {

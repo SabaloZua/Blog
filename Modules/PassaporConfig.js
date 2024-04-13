@@ -7,7 +7,7 @@ const LocalStrategy = require('passport-local').Strategy;
 module.exports=(passport)=>{
 passport.use(new LocalStrategy(
     function(username, password, done) {
-       db.query('SELECT * FROM tb_usuario WHERE t_nome = $1', [username], function(err, results) {
+       db.query('SELECT * FROM tb_usuario WHERE t_nome = $1', [username.replace(/\s+/g, '')], function(err, results) {
             if (err) { return done(err); }
            
             if (results.rows.length ==  0) {

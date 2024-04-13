@@ -123,6 +123,11 @@ hbs.registerHelper('range', function (start, end) {
     return Array.from({ length: (end - start + 1) }, (_, i) => start + i);
 });
 
+
+hbs.registerHelper('Uppercase', function(str) {
+        return str.replace(/([A-Z])/g, ' $1');
+});
+
 // Rota Principal
 app.get('/', async (req, res) => {
     //Obtém o número da página atual da query string da URL. Se não estiver presente, assume 1 como padrão

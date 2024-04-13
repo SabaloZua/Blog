@@ -1,10 +1,11 @@
 const conecao = require('../Modules/db');
 
 exports.PaginalPerfil = async (req, res) => {
-    const nome = req.params['nome'];
+    const nome = req.params.nome;
 
-    const DadosUsuario = await conecao.query('select t_descricao,t_nome, t_data_cadastro from tb_usuario where t_nome= $1', [nome]);
-
+    const DadosUsuario = await conecao.query('select t_descricao,t_nome, t_data_cadastro from tb_usuario where t_nome= $1 ', [nome]);
+  
+    console.log( DadosUsuario.rows[0])
     res.render('PerfilVisit/Perfil', {
         style: [
             { Link: "css/perfil.css" },],
@@ -14,13 +15,14 @@ exports.PaginalPerfil = async (req, res) => {
 
 //Controller que leva a pagina do perfil onde é mostrado todos o comentarios do usuario
 exports.PaginalPerfilComentario = async (req, res) => {
-    const nome = req.params['nome'];
+    const nome = req.params.nome;
 
     const DadosUsuario = await conecao.query('select t_nome from tb_usuario where t_nome= $1', [nome]);
     const ComentariosUsuario = await conecao.query(`select tbc.t_conteudo_post,tbc.t_data from tb_comentario as tbc 
                                                     inner join tb_usuario as tbu on tbu.n_id_usuario=tbc.n_id_usuario
                                                     where tbu.t_nome=$1`, [nome]);
 
+                                                 
     res.render('PerfilVisit/PerfilComentarios', {
         style: [
             { Link: "css/perfil.css" },],
@@ -32,7 +34,7 @@ exports.PaginalPerfilComentario = async (req, res) => {
 //Controller que leva a pagina do perfil onde é mostrado todos as Publicações do usuario
 exports.PaginalPublica = async (req, res) => {
 
-    const nome = req.params['nome'];
+    const nome = req.params.nome;
     //Obtém o número da página atual da query string da URL. Se não estiver presente, assume 1 como padrão
     const page = parseInt(req.query.page) || 1;
     //Obtém os posts para a página atual
