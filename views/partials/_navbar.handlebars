@@ -7,12 +7,21 @@
                      </button>
         <div class="navbar-collapse collapse">
                      <ul class="navbar-nav flex-grow-1">
+                       {{#if (eq user.n_id_tipousuario 2)}}
                         <li class="nav-item">
-                            <a href="/" class="nav-link text-white ">Principal</a>
+                        <a href="/admin" class="nav-link text-white ">Principal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link text-white">Bem Vindo ADM: <strong>{{user.t_nome}}</strong></a>
+                        </li>
+                        {{else}}
+                        <li class="nav-item">
+                        <a href="/" class="nav-link text-white ">Principal</a>
                         </li>
                         <li class="nav-item">
                             <a href="/sobre-nos" class="nav-link text-white">Sobre Nós</a>
                         </li>
+                        {{/if}}
                      </ul>
             
                      
@@ -27,6 +36,7 @@
                             <a href="/Login" class="nav-link text-white">Entrar</a>
                         </li>
                         {{/if}}
+
                         <li class="nav-item" title="Criar uma publicação">
                             <a href="/postagens/add" class="nav-link  text-white">
                              <i class="bi bi-plus" style="font-size:24px; line-height:24px;"></i>
@@ -43,6 +53,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="/Perfil" class="dropdown-item">Perfil</a></li>
                                 <li><a href="/Usuario/Editar" class="dropdown-item">Editar Perfil</a></li>
+                                {{#if (eq user.n_id_tipousuario 2)}} <li><a href="/admin/users" class="dropdown-item">Gerir Usuarios</a></li>{{/if}}
                                 <li><a href="/Login/TerminarSessao" class="dropdown-item">Terminar Sessão</a></li>
                                 <li>
                                   <div class="dropdown-item">
@@ -100,6 +111,7 @@
       <div class="modal-header">
         <h5> </h5>
         <h5 class="modal-title" id="exampleModalLongTitle" style="color: black;">Pesquisa</h5>
+      
       </div>
  <div class="modal-body">
     <form action="/postagens/pesq" method="get">

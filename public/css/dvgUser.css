@@ -1,0 +1,77 @@
+body{
+    overflow: hidden !important;
+}
+.c1{
+width: 10%;
+}
+.c2{
+width: 30%;
+}
+.c3{
+    width: 20%;
+    /* border: 1px solid #f00; */
+}
+.c4{
+    width: 25%;
+    /* border: 1px solid #f00; */
+}
+
+.c5{
+    width: 15%;
+    /* border: 1px solid #f00; */
+    display: flex;
+   justify-content: space-around;
+}
+
+
+.dgv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    }
+    .dgv_titulo{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row;
+         background-color: #212529;
+        color: #fff;
+        border-radius: 5px 5px 0px 0px;
+    }
+    
+    
+    .dgv_dados{
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-direction:column;
+      
+    }
+    
+    
+    .dgv_linha{
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row;    
+       width: 100% !important;
+      
+    }
+    .dgv_linha:nth-child(odd){
+        background-color:rgb(237, 236 254);
+    }
+    .dgv_linha:nth-child(even){
+        background-color: #eee;
+    }
+    .dgv_linha:hover{
+        background-color: #088 !important;
+        color: #fff;
+    }
+    .ocultarlinhagrid{
+        display: none !important;
+    }
+    
+    .dgv_titulo div,.dgv_linha div{
+        padding: 7px;
+    }

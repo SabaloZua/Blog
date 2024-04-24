@@ -26,9 +26,38 @@ exports.EliminarPost=async(req,res)=>{
     }
 }
 
+
+
 //Controller que leva a pagina de Gestão de usuarios
 exports.PaginaGestaoUsuarios=async(req,res)=>{
-    const sql=`select * from tb_usuario where n_id_tipousuario=2`
+    const sql=`select tbu.n_id_usuario,tbu.t_nome,tbu.t_email,tbc.t_dsccurso
+        from tb_usuario as tbu
+        inner join tb_curso as tbc on tbc.n_idcurso=tbu.n_idcurso                
+        where tbu.n_id_tipousuario=1`
     const dadosUser=await db.query(sql);
-    res.render('Admin/PaginaGestUser',{User:dadosUser.rows});
+    res.render('Admin/PaginaGestUser',{UsersG:dadosUser.rows,
+        style: [
+            { Link: "css/dvgUser.css" },
+
+         ],script: [
+            { linkScrpt: 'scripts/Filtro.js' },
+        ]
+    });
+}
+
+exports.TornarAdmin=async(req,res)=>{
+    const idusuario=req.params.id;
+    let sqlquery = ` update tb_usuario set n_id_tipousuario=1`
+    
+}
+exports.EliminarUser=async(req,res)=>{
+    try{
+    const idusuario=req.params.id;
+    let sqlquery = ` delete from tb_usuario where n_id_usuario=$1`
+    await db.query(sqlquery,[idusuario]);
+    req.flash('success_msg', 'usuario eliminado com Sucesso');
+    res.redirect('/');
+    }catch(e){
+        console.log(e);
+    }
 }

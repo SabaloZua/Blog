@@ -1,6 +1,49 @@
 <main class="flex-fill">
     <div class="container">
-            <h1>Gestão de Usuarios</h1>
+        <h1 class="mb-4">Gestão de Usuarios</h1>
+
+                    <div class="container">
+           <div class="row">
+                            <div class="col-12 col-md-5">
+                               
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Buscar usuario" id="filtrar" required>
+                                      </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+        <div class="dvg col-12 ">
+            <div class=" dgv_titulo">
+                <div class="c1">ID</div>
+                <div class="c2">Nome</div>
+                <div class="c3">Curso</div>
+                <div class="c4">Email</div>
+                <div class="c5">Funções</div>
+            </div>
+
+            <div class=" dgv_dados ">
+                {{#each UsersG}}
+                <div class=" dgv_linha">
+                    <div class="c1">{{n_id_usuario}}</div>
+                    <div class="c2">{{t_nome}}</div>
+                    <div class="c3">{{t_dsccurso}}</div>
+                    <div class="c4">{{t_email}}</div>
+                    <div class="c5">
+                            <a href="/admin/users/Eliminar/{{n_id_usuario}}" title="Eliminar">
+                            <i class="bi bi-person-dash"  style="font-size:24px; line-height:24px; cursor:pointer;"></i>
+                            </a>
+                            <a href="#" title="Torna Admin">
+                            <i class="bi bi-person-up"  style="font-size:24px; line-height:24px; cursor:pointer;"></i>
+                            </a>
+        
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
     </div>
 
 </main>
