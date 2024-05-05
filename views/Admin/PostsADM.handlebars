@@ -1,0 +1,89 @@
+
+<main class="flex-fill">
+    <div class="container">
+     {{#if error}}
+    <div class="alert alert-success">{{error}}</div>
+    {{/if}}
+        <div class="row">
+            <div class="col-12 col-md-10">
+                <div class="card cardT mt-2">
+
+                    <div class=" cabpost">
+                        <address>
+                            <a href="/perfil/{{Posts.t_nome}}">{{ Uppercase Posts.t_nome}}</a>
+                        </address>
+                        <a href="#" class="text-body">{{getTimeAgo Posts.t_data}}</a>
+
+                    </div>
+                    <h1>{{Posts.t_titulo_post}}</h1>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-md-10">
+                    <div class="card cardC text-break mb-3">
+
+                        {{{Mark Posts.t_conteudo_post}}}
+
+
+                    </div>
+                   
+                    <div class="estrelar">
+                        <label for="" class="text-body-secondary">Dê uma estrela ao Post</label>
+                        <i class="bi bi-star" style="font-size:24px; line-height:24px;  cursor: pointer;"
+                            title="Estrelar" id="estrela"></i>
+                    </div>
+                   
+
+                  
+                </div>
+            </div>
+           
+            <div class="row">
+                <div class="col-12 col-md-8">
+                    <form action="/postagens/Comentario/{{Posts.n_id_post}}" method="post">
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder=" " id="response" style="height: 150px;"
+                                name="Comentario"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-dark mt-4">Enviar</button>
+                    </form>
+
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <h2 class="mb-2 mt-4">Respostas</h2>
+        {{#if Coment}}
+        {{#each Coment}}
+        <div class="row">
+            <div class="col-12 col-md-10">
+                <div class="card cardCom">
+                    <div class=" cabpost">
+                        <address>
+                            <a href="/perfil/{{this.t_nome}}">{{this.t_nome}}</a>
+                        </address>
+                        <a href="#" class="text-body">{{getTimeAgo this.t_data}}</a>--
+                        <a href="/admin/comentario/eliminar/{{this.n_id_comentario}}">Eliminar</a>
+                    </div>
+                    {{{Mark this.t_conteudo_post}}}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+        {{else}}
+
+        <div class="row">
+            <div class="col-12 col-md-10">
+                <p>Ainda não há nenhum comentário neste Post😢. <br> Que tal fazer um agora😁 </p>
+            </div>
+        </div>
+        {{/if}}
+
+
+</main>

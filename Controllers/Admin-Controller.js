@@ -61,3 +61,73 @@ exports.EliminarUser=async(req,res)=>{
         console.log(e);
     }
 }
+exports.EliminarComentario=async(req,res)=>{
+    const idComent=req.params.id;
+    const sql=`delete from tb_comentario where n_id_comentario=$1`
+    try{
+        await db.query(sql,[idComent]);
+        req.flash('success_msg', 'Comentario eliminado com Sucesso');
+        res.redirect('/admin');
+    }catch(erro){
+        throw erro;
+    }
+}
+
+// ---------------------------bloco para pesquisa do post----------------------------------
+exports.PesquisaPost=async(req,res)=>{
+    const busca=req.query.busca;
+        const posts = await getPosts(busca);
+        res.render('Admin/PostsPesqADM', {
+         posts,
+        })
+   };
+   const getPosts = async ( busca="") => {
+      const query = `select tbp.n_id_post,tbp.t_titulo_post,tbp.t_data,tbu.t_nome,
+      (select count(tbc.n_id_comentario) from tb_comentario as tbc where tbc.n_id_post=tbp.n_id_post) 
+                  from tb_post as tbp     
+                  inner join tb_usuario tbu  on tbu.n_id_usuario=tbp.n_id_usuario 
+                    where  tbp.t_titulo_post ILIKE '%' || $1 || '%'`;
+      const values = [busca];
+      const res = await db.query(query, values);
+      return res.rows;
+   }
+   
+// ---------------------------bloco para pesquisa do post---------------------------------------------------
+
+
+// controller para bucar um post especifico
+exports.getpost = async (req, res) => {
+ 
+    const id=req.params.id
+    let sqlqueryPost = `select tbp.n_id_post,tbp.t_titulo_post,tbp.t_conteudo_post,tbp.t_data,tbu.t_nome
+                             from tb_post as tbp
+                      inner join tb_usuario as tbu on tbu.n_id_usuario=tbp.n_id_usuario
+                          where tbp.n_id_post=$1`;
+ 
+    let sqlqueryComent = `select  tbc.n_id_comentario, tbc.t_conteudo_post,tbc.t_data,tbu.t_nome from tb_comentario tbc 
+                          inner join tb_post as tbp on tbp.n_id_post=tbc.n_id_post
+                          inner join tb_usuario as tbu on tbu.n_id_usuario=tbc.n_id_usuario
+                 where  tbc.n_id_post=$1`;
+ 
+    const DadosPost = await db.query(sqlqueryPost, [id]);
+ 
+    const DadosComent = await db.query(sqlqueryComent, [ await DadosPost.rows[0].n_id_post]);
+ 
+ 
+    // Renderizar o template Handlebars com o conteúdo HTML
+    res.render('Admin/PostsADM', {
+       style: [
+          { Link: "css/estilosPost.css" },
+          { Link: "myesy/easymde.min.css" }
+       ],
+       script: [
+ 
+          { linkScrpt: 'myesy/easymde.min.js' },
+          { linkScrpt: 'scripts/esayComent.js' },
+       ],
+       Posts: DadosPost.rows[0],
+       Coment: DadosComent.rows
+ 
+    }
+    );
+ }

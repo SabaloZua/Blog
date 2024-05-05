@@ -1,0 +1,28 @@
+<main class="flex-fill">
+
+<div class="container">
+{{#if posts}}
+
+ {{#each posts}}
+        <ol class="mt-4">
+            <li>
+                <div class="row rp">
+                    <div class="col-12 col-md-10">
+                        <div class="card post ">
+                            <h5 class="card-title"><a href="/admin/post/{{this.n_id_post}}">{{t_titulo_post}}</a>
+                            </h5>
+                            <p class="card-text">0 tabcoins - {{count}} comentários - {{t_nome}} · {{getTimeAgo t_data}} -  <a href="/admin/eliminar/{{n_id_post}}">Eliminar</a></p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ol>
+        {{/each}}
+{{else}}
+<div>
+    <p class="lead">Não foi encontrado nenhum post</p>
+</div>
+{{/if}}
+</div>
+
+</main>

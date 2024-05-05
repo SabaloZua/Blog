@@ -99,8 +99,9 @@ exports.Coment = async (req, res) => {
    const idUser = req.session.passport.user;
    let Data_hoje = new Date();
    const idpost = req.params.id;
+   
 
-   if(conteudo=="" || typeof conteudo==undefined || conteudo==null){
+   if(conteudo=="" || typeof conteudo===undefined || conteudo===null){
       erros.push('Ocorreu algum erro tente de novo');
    }
    if (erros.length > 0) {

@@ -114,7 +114,7 @@
       
       </div>
  <div class="modal-body">
-    <form action="/postagens/pesq" method="get">
+    <form {{#if (eq user.n_id_tipousuario 1)}} action="/postagens/pesq" {{else}} action="/admin/pesq" {{/if}} method="get">
       <div class="form-group">
       <input type="search" class="form-control" name="busca" style="background-color: #ffff !important; color: black !important;">
       <button class="btn btn-outline-dark" type="submit">Buscar</button>

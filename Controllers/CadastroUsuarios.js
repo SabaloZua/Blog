@@ -107,7 +107,7 @@ exports.Actulizar = async (req, res) => {
     const nomeU = req.body.nome.replace(/\s+/g, '');
     const email = req.body.email;
     const dsc = req.body.dsc;
-    if (nomeU != "" && email != "" && dsc != "") {
+    if (nomeU != "" && email != "") {
         const sqlquery = 'update tb_usuario set t_nome=$1, t_email=$2, t_descricao=$3 where n_id_usuario=$4 ';
         await client.query(sqlquery, [nomeU, email, dsc, id], (err, result) => {
             if (!err) {
