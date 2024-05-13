@@ -9,7 +9,9 @@ exports.PaginalPerfil = async (req, res) => {
 
     res.render('UsuarioPerfil/Perfil', {
         style: [
-            { Link: "css/perfil.css" },],
+            { Link: "css/perfil.css" },
+            {Link: "css/novo link"}
+        ],
         Usuario: DadosUsuario.rows[0],
     });
 }

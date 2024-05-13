@@ -84,7 +84,7 @@ exports.Cadastro = async (req, res) => {
                 await client.query(sqlquery, [nome, senha, email, curso, bio,Data_hoje], (err, result) => {
                     if (!err) {
                         req.flash('success_msg', 'Cadastro efectuado com Sucesso. Visite o seu email deixamos uma mensagem especial para si');
-                        res.redirect('/');
+                        res.redirect('/Login');
                         sendTestEmail(dados_email);
                     } else {
                         console.log(`erro na insercao ${err}`);

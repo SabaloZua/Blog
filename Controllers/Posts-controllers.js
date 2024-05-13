@@ -108,6 +108,7 @@ exports.Coment = async (req, res) => {
       req.flash('error', erros[0]);
       // res.redirect(`/postagens/post/${nomeUser}/${titulo}`);
       res.redirect('/');
+      return;
    } 
    let sql = `insert into tb_comentario (t_conteudo_post,t_data,n_id_usuario,n_id_post) values 
                               ($1,$2,$3,$4)`;

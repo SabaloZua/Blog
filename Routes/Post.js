@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 // Rota que leva ao pagina para publicar uma Postagem
-router.get('/add',logado,Controller.Paginapostadd);
+router.get('/add',Controller.Paginapostadd);
 
 // Rota que busca uma unica potagem 
 router.get('/post/:id',Controller.getpost);
@@ -29,7 +29,7 @@ router.post('/upload', upload.single('image'),(req,res)=>{
     res.json({ filepath: `/Imagens/${req.file.filename}` });
 })
 
-router.post('/Comentario/:id',Controller.Coment);
+router.post('/Comentario/:id',logado,Controller.Coment);
 
 router.get('/pesq',Controller.PesquisaPost);
 module.exports = router

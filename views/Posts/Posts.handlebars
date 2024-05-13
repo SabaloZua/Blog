@@ -28,18 +28,16 @@
 
 
                     </div>
-                    {{#if user}}
+                   
                     <div class="estrelar">
                         <label for="" class="text-body-secondary">Dê uma estrela ao Post</label>
                         <i class="bi bi-star" style="font-size:24px; line-height:24px;  cursor: pointer;"
                             title="Estrelar" id="estrela"></i>
                     </div>
-                    {{else}}
-
-                    {{/if}}
+                   
                 </div>
             </div>
-            {{#if user}}
+           
             <div class="row">
                 <div class="col-12 col-md-8">
                     <form action="/postagens/Comentario/{{Posts.n_id_post}}" method="post">
@@ -54,9 +52,9 @@
 
                 </div>
             </div>
-            {{else}}
 
-            {{/if}}
+
+     
         </div>
 
         <h2 class="mb-2 mt-4">Respostas</h2>
