@@ -61,7 +61,7 @@ exports.Cadastro = async (req, res) => {
       
             req.flash('error_msg',erros[0]);
        
-        res.redirect('/');
+        res.redirect('/Usuario/Cadastrar');
         return;
     }
     else {

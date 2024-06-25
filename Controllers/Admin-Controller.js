@@ -56,7 +56,7 @@ exports.EliminarUser=async(req,res)=>{
     let sqlquery = ` delete from tb_usuario where n_id_usuario=$1`
     await db.query(sqlquery,[idusuario]);
     req.flash('success_msg', 'usuario eliminado com Sucesso');
-    res.redirect('/');
+    res.redirect('/admin/users');
     }catch(e){
         console.log(e);
     }

@@ -105,9 +105,9 @@ exports.Coment = async (req, res) => {
       erros.push('Ocorreu algum erro tente de novo');
    }
    if (erros.length > 0) {
-      req.flash('error', erros[0]);
+      req.flash('error_msg', erros[0]);
       // res.redirect(`/postagens/post/${nomeUser}/${titulo}`);
-      res.redirect('/');
+      res.redirect(`/postagens/post/${idpost}`);
       return;
    } 
    let sql = `insert into tb_comentario (t_conteudo_post,t_data,n_id_usuario,n_id_post) values 
@@ -115,7 +115,7 @@ exports.Coment = async (req, res) => {
 
    await client.query(sql, [conteudo, Data_hoje, idUser, idpost]);
       req.flash('success_msg','Comentario efectudo com sucesso');
-      res.redirect('/');
+      res.redirect(`/postagens/post/${idpost}`);
    }catch(err){
       throw err;
    };
