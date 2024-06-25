@@ -51,7 +51,7 @@ router.get('/post/:id',Controller.getpost);
 router.post("/publicar",logado,Controller.publicar);
 
 router.post('/upload', upload.single('image'), async (req,res)=>{
-    const StoregeRef=ref(storageFirebase,`Images/${req.file.originalname}-${Date.now()}`)
+    const StoregeRef=ref(storageFirebase,`Images/${req.file.originalname}`)
     if(!req.file.buffer){throw new Error()}
     await uploadBytes(StoregeRef,req.file.buffer,{
         contentType:req.file.mimetype,
