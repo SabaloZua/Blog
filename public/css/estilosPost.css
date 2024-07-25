@@ -91,9 +91,11 @@ p{
     
     margin-top: 5px;
 }
-p > img{
+
+p img{
     max-width: 60% !important;
 }
+
 
 .cardC  pre,
 .cardCom pre{
