@@ -20,20 +20,7 @@ const firebaseApp=initializeApp({
 })
 const storageFirebase=getStorage(firebaseApp);
 
-// let CaminhoPastaIMG=path.join(__dirname, '..', 'public', 'Imagens');
-// const storage = multer.diskStorage({
-//     destination: function(req, file, cb) {
-//         cb(null, CaminhoPastaIMG);
-//     },
-//     filename: function(req, file, cb) {
-//         cb(null, Date.now() + '-' + file.originalname);
-//     }
-// });
-
-// const upload = multer({ storage: storage });
-
 //multer
-
 
 const upload=multer({
     storage:multer.memoryStorage()
@@ -64,4 +51,4 @@ router.post('/upload', upload.single('image'), async (req,res)=>{
 router.post('/Comentario/:id',logado,Controller.Coment);
 
 router.get('/pesq',Controller.PesquisaPost);
-module.exports = router
+module.exports = router;

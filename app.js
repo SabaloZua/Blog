@@ -58,6 +58,7 @@ app.use('/bootstrap-i', express.static("./node_modules/bootstrap-icons/font"));
 app.use('/myesy', express.static(path.join(__dirname,"node_modules/easymde/dist/")));
 app.use('/css', express.static('./css'));
 app.use('/scrpit', express.static("./scripts"));
+app.use('/Imgs', express.static('./public/Imagens'));
 
 
 //  Pasta public 
