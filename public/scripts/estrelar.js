@@ -15,8 +15,10 @@ estrela.addEventListener('click',(e)=>{
     })
     .then(res=>{
         estrela.classList.replace('bi-star','bi-star-fill');
+        lab.innerHTML="Só um minutinho....";
         estado='ES';
     })
+     lab.innerHTML="Pronto estrela enviada com sucesso"
 });
 
 document.addEventListener("DOMContentLoaded", ()=> {
