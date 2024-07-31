@@ -3,7 +3,8 @@ const conecao = require('../Modules/db');
 exports.PaginalPerfil = async (req, res) => {
     const nome = req.params.nome;
 
-    const DadosUsuario = await conecao.query('select t_descricao,t_nome, t_data_cadastro from tb_usuario where t_nome= $1 ', [nome]);
+    const DadosUsuario = await conecao.query(`select tbu.n_id_usuario, tbu.t_descricao,tbu.t_nome, tbu.t_data_cadastro
+                                from tb_usuario as tbu where tbu.t_nome= $1  `, [nome]);
   
     console.log( DadosUsuario.rows[0])
     res.render('PerfilVisit/Perfil', {
@@ -72,7 +73,8 @@ const getPosts = async (page = 1, nome="",limit = 3) => {
     const offset = (page - 1) * limit;
 
     const query = `select tbp.n_id_post,tbp.t_titulo_post,tbp.t_data,tbu.t_nome,
-    (select count(tbc.n_id_comentario) from tb_comentario as tbc where tbc.n_id_post=tbp.n_id_post) 
+    (select count(tbc.n_id_comentario) from tb_comentario as tbc where tbc.n_id_post=tbp.n_id_post),
+     (select count(tbl.n_id_like) from tb_like_post as tbl where tbl.n_id_post=tbp.n_id_post) as es
                 from tb_post tbp     
                 inner join tb_usuario tbu  on tbu.n_id_usuario=tbp.n_id_usuario 
                 where tbu.t_nome=$1

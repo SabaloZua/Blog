@@ -53,6 +53,7 @@ exports.getpost = async (req, res) => {
 
          { linkScrpt: 'myesy/easymde.min.js' },
          { linkScrpt: 'scripts/esayComent.js' },
+         { linkScrpt: 'scripts/estrelar.js' },
       ],
       Posts: DadosPost.rows[0],
       Coment: DadosComent.rows
@@ -128,13 +129,57 @@ exports.PesquisaPost=async(req,res)=>{
       posts,
      })
 };
+
 const getPosts = async ( busca="") => {
    const query = `select tbp.n_id_post,tbp.t_titulo_post,tbp.t_data,tbu.t_nome,
-   (select count(tbc.n_id_comentario) from tb_comentario as tbc where tbc.n_id_post=tbp.n_id_post) 
+   (select count(tbc.n_id_comentario) from tb_comentario as tbc where tbc.n_id_post=tbp.n_id_post) ,
+    (select count(tbl.n_id_like) from tb_like_post as tbl where tbl.n_id_post=tbp.n_id_post) as es
                from tb_post as tbp     
                inner join tb_usuario tbu  on tbu.n_id_usuario=tbp.n_id_usuario 
                  where  tbp.t_titulo_post ILIKE '%' || $1 || '%'`;
    const values = [busca];
    const res = await client.query(query, values);
    return res.rows;
+}
+
+
+/// estrelar post
+
+// rotina que vair inserir estrelas em um post
+exports.estrelar= async(req,res)=>{
+try{
+   if(await!req.isAuthenticated()){
+      return;
+   }
+
+   const idUser = req.session.passport.user;
+   const id_post=req.params.idp;
+
+   const sql2= `select * from tb_like_post where n_id_usuario=$1 and n_id_post=$2`
+   const resl= await client.query(sql2,[idUser,id_post]);
+   if(resl.rows.length==1){
+      return
+   }
+   const sql=`insert into tb_like_post (n_id_usuario,n_id_post) values ($1,$2)`
+   await client.query(sql,[idUser,id_post]);
+   res.redirect(`/postagens/post/${id_post}`);
+}catch(err){
+   throw err;
+}
+}
+
+exports.verificaEstrela=async(req,res)=>{
+   if(await!req.isAuthenticated()){
+      res.json({estado:'NL'});
+      return;
+   }
+   const idUser = req.session.passport.user;
+   const id_post=req.params.idp;
+    const sql= `select * from tb_like_post where n_id_usuario=$1 and n_id_post=$2` 
+    const resl= await client.query(sql,[idUser,id_post]);
+    if(resl.rows.length == 1){
+      res.json({estado:'ES'});
+      return;
+    }
+
 }

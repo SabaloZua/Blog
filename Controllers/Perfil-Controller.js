@@ -5,7 +5,8 @@ exports.PaginalPerfil = async (req, res) => {
     const userId = req.session.passport.user;
     let id = userId;
 
-    const DadosUsuario = await conecao.query('select t_descricao,t_nome from tb_usuario where n_id_usuario=$1', [id]);
+    const DadosUsuario = await conecao.query(`select tbu.t_descricao,tbu.t_nome
+        from tb_usuario as tbu where tbu.n_id_usuario=$1`, [id]);
 
     res.render('UsuarioPerfil/Perfil', {
         style: [
@@ -70,7 +71,8 @@ const getPosts = async (page = 1, id=0,limit = 3) => {
     const offset = (page - 1) * limit;
 
     const query = `select tbp.n_id_post,tbp.t_titulo_post,tbp.t_data,tbu.t_nome,
-    (select count(tbc.n_id_comentario) from tb_comentario as tbc where tbc.n_id_post=tbp.n_id_post) 
+    (select count(tbc.n_id_comentario) from tb_comentario as tbc where tbc.n_id_post=tbp.n_id_post) ,
+     (select count(tbl.n_id_like) from tb_like_post as tbl where tbl.n_id_post=tbp.n_id_post) as es
                 from tb_post tbp     
                 inner join tb_usuario tbu  on tbu.n_id_usuario=tbp.n_id_usuario 
                   where tbp.n_id_usuario=$1

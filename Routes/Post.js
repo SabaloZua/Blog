@@ -51,4 +51,7 @@ router.post('/upload', upload.single('image'), async (req,res)=>{
 router.post('/Comentario/:id',logado,Controller.Coment);
 
 router.get('/pesq',Controller.PesquisaPost);
+router.post('/estrelar/:idp',logado,Controller.estrelar);
+router.get('/verficarEst/:idp',Controller.verificaEstrela);
+
 module.exports = router;

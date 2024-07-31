@@ -10,7 +10,8 @@ const client=require('./db');
     const offset = (page - 1) * limit;
     const query = `
     select tbp.n_id_post,tbp.t_titulo_post,tbp.t_data,tbu.t_nome,
-    (select count(tbc.n_id_comentario) from tb_comentario as tbc where tbc.n_id_post=tbp.n_id_post) 
+    (select count(tbc.n_id_comentario) from tb_comentario as tbc where tbc.n_id_post=tbp.n_id_post),
+    (select count(tbl.n_id_like) from tb_like_post as tbl where tbl.n_id_post=tbp.n_id_post) as es
                 from tb_post tbp     
                 inner join tb_usuario tbu  on tbu.n_id_usuario=tbp.n_id_usuario  
                 ORDER BY tbp.t_data desc

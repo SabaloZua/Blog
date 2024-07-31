@@ -11,7 +11,7 @@
                         <div class="card post ">
                             <h5 class="card-title"><a href="/postagens/post/{{this.n_id_post}}">{{this.t_titulo_post}}</a>
                             </h5>
-                            <p class="card-text">0 tabcoins - {{count}} comentários - {{Uppercase t_nome}} · {{getTimeAgo t_data}}</p>
+                            <p class="card-text">{{this.es}} - estrelas - {{count}} comentários - {{Uppercase t_nome}} · {{getTimeAgo t_data}}</p>
                         </div>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
         {{/each}}
 {{else}}
 <div>
-    <p class="lead">Não foi encontrado nenhum post Com ou semelhante este Título</p>
+    <p class="lead">Não foi encontrado nenhum post</p>
 </div>
 {{/if}}
 </div>

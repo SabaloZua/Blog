@@ -32,11 +32,10 @@
                          <div class="card-body mt-3  ms-3  ` d-flex  justify-content-start">
                         <div class="quadradoVerde me-1"></div>
                         <p class="me-3">Membro: {{getTimeAgo Usuario.t_data_cadastro }}</p>
-                        <p> Total de estrelas⭐: 0 </p>
                     </div>
                    
                    {{#if Usuario.t_descricao }}
-                    <div class="card-body mt-4 ms-md-3 d-flex justify-content-center justify-content-md-start ">
+                    <div class="card-body mt-4 ms-md-3 d-flex justify-content-center justify-content-md-start " style="border: 1px solid snow; border-radius: 5px;">
                         <p>{{Usuario.t_descricao}}</p>
                     </div>
                     {{else}}
