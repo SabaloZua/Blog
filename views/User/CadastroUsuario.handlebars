@@ -15,33 +15,33 @@
                         <div class="form-row  flex-column ">
 
                           <div class="form-group ">
-                            <label for="inputNome">Nome</label>
-                            <input type="text" class="form-control" id="inputNome" placeholder="Digite aqui o seu Nome de usuario" autofocus name="nomeusario">
+                            <label for="inputNome">Nome de usuario</label>
+                            <input type="text" class="form-control" id="inputNome" placeholder="Recomendamos que utilize o primeiro e último nome EX: Leonel Messi" autofocus name="nomeusario" required>
                           </div>
 
                             
                               <div class="form-group">
                                 <label for="inputSenha">Senha</label>
-                                <input type="password" class="form-control" id="inputSenha" placeholder="Digite a sua senha " name="senhausuario" autocapitalize="off">
+                                <input type="password" class="form-control" id="inputSenha" placeholder="Digite a sua senha com no minímo 8 caracteres " name="senhausuario" autocapitalize="off" required>
                               </div>
                               <div class="form-group">
                                 <label for="inputSenha">Confirme a senha</label>
-                                <input type="password" class="form-control" id="inputSenha" placeholder="Digite novamente a sua senha " name="senhausuario2" autocapitalize="off">
+                                <input type="password" class="form-control" id="inputSenha" placeholder="Digite novamente a sua senha " name="senhausuario2" autocapitalize="off" required>
                               </div>
 
                                 <div class="form-group">
                                 <label for="inputEmail">Email</label>
-                                <input type="email" class="form-control" id="inputEmail" placeholder="Digite aqui o Email" name="emailusuario" autocapitalize="off">
+                                <input type="email" class="form-control" id="inputEmail" placeholder="Digite aqui o Email" name="emailusuario" autocapitalize="off" required>
                               </div>
                         
                                    <div class="form-group ">
-                            <label for="biosuario">Biografia</label>
-                           <textarea name="dsc" class="form-control" placeholder="Fale um pouco sobre si" id="biosuario"  style="height: 150px;"></textarea>
+                            <label for="biosuario">Biografia </label>
+                           <textarea name="dsc" class="form-control" placeholder="Fale um pouco sobre si (Campo Opicional)" id="biosuario"  style="height: 150px;"></textarea>
                           </div>
 
                           <div class="form-group ">
                             <label for="inputTipoUsuario">Curso</label>
-                            <select id="inputTipoUsuario" class="form-control" name="cursos" >
+                            <select id="inputTipoUsuario" class="form-control" name="cursos" required >
                               <option>Selecione um curso</option>
                               {{#each curso}}
                               <option value="{{n_idcurso}}">{{t_dsccurso}} </option>
