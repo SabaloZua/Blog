@@ -40,7 +40,7 @@ exports.PaginalPublica = async (req, res) => {
     //Obtém os posts para a página atual
     const posts = await getPosts(page,userId);
     const totalPosts = await getTotalPosts(userId); // Função para obter o total de posts
-    const totalPages = Math.ceil(totalPosts / 4); //  exibir 5 posts por página
+    const totalPages = Math.ceil(totalPosts / 3); //  exibir 5 posts por página
 
     let sql2 = 'select t_nome from tb_usuario where n_id_usuario=$1';
     const DadosUsuario = await conecao.query(sql2, [userId]);

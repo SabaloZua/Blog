@@ -4,6 +4,7 @@
       <main class="flex-fill">
 
             <div class="container">
+                 {{>_msg}}
                 <div class="row">
 
                  <h1 class="titulos">Editar Perfil</h1>
@@ -24,7 +25,7 @@
 
                               <div class="form-group ">
                                 <label for="inputMorada">Biografia</label>
-                               <textarea name="dsc" class="form-control" placeholder="Fale um pouco sobre Ti" required>{{usuario.t_descricao}}</textarea>
+                               <textarea name="dsc" class="form-control" placeholder="Fale um pouco sobre Ti (Opicional)">{{usuario.t_descricao}}</textarea>
                               </div>
                             
                         </div>

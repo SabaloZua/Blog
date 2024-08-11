@@ -6,9 +6,12 @@ var id=new URL(url)
 let estado="";
 
 estrela.addEventListener('click',(e)=>{
-    if(estado == 'NL' || estado =='ES' ){
-        return;
-    } 
+    if(estado == 'NL'){
+        lab.innerHTML="Faça primeiro o login "
+       return;
+   } else if( estado =='ES' ){
+       return;
+   }
     const idPost=id.pathname.split('/')[3]
     fetch(`/postagens/estrelar/${idPost}`,{
         method:'POST'
