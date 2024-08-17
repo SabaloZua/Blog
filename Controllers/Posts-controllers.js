@@ -148,7 +148,7 @@ const getPosts = async ( busca="") => {
 // rotina que vair inserir estrelas em um post
 exports.estrelar= async(req,res)=>{
 try{
-   if(await!req.isAuthenticated()){
+   if(await !req.isAuthenticated()){
       return;
    }
 

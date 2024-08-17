@@ -10,15 +10,17 @@ const remark=require('remark');
 const pgSession = require('connect-pg-simple')(session);
 const html = require('remark-html');
 const port=process.env.PORT ? Number(process.env.PORT) : 3000;
-
-
 require('dotenv').config();
 require('./Modules/PassaporConfig')(passport);
+const {inject} =require('@vercel/analytics');
 app.use(cors({credentials: true}));
 app.use(express.json());
 app.use(express.urlencoded({
     extended: false
 }));
+
+//inject função do pacote, que adicionará o script de rastreamento
+inject();
 
 //CONFIGURAÇÕES
 //configuração da sessao
@@ -53,8 +55,6 @@ app.use((req, res, next) => {
 
 
 // add as tecnologias
-app.use('/bootstrap', express.static("./node_modules/bootstrap/dist"));
-app.use('/bootstrap-i', express.static("./node_modules/bootstrap-icons/font"));
 app.use('/myesy', express.static(path.join(__dirname,"node_modules/easymde/dist/")));
 app.use('/css', express.static('./css'));
 app.use('/scrpit', express.static("./scripts"));

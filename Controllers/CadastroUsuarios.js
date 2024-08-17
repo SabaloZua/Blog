@@ -46,13 +46,13 @@ exports.Cadastro = async (req, res) => {
     // visa buscar um usuario que já tenha o mesmo nome
     const nomesUsuario= await client.query('select t_nome from tb_usuario where t_nome=$1',[nome]);
 
-    if (nome == "" || senha == "" ||  email =="" || curso == "") {
+    if (nome == "" || senha == "" ||  email =="" || curso == "" || curso==undefined) {
         erros.push('Um dos campos não foi preênchido')
     }
     if (senha != senha2) {
         erros.push('As senhas  digitadas são diferentes' );
     }
-    if(senha.length<8){
+    if(senha.length < 8){
         erros.push('Senha muito Curta! A sua senha tem de ter no mínimo 8 caracteres');
     }
     // verificação para saber se já exite um usuario com o mesmo nome
@@ -72,7 +72,7 @@ exports.Cadastro = async (req, res) => {
         let dados_email = {
             email_clinent: email,
             nome_Client: nome
-        };
+        }
         bcrypt.genSalt(10, (erro, salt) => {
             bcrypt.hash(senha, salt, async (erro, hash) => {
                 if (erro) {
