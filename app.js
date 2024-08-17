@@ -20,7 +20,9 @@ app.use(express.urlencoded({
 }));
 
 //inject função do pacote, que adicionará o script de rastreamento
-inject();
+inject({
+    mode: 'production',
+});
 
 //CONFIGURAÇÕES
 //configuração da sessao
