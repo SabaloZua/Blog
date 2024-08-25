@@ -31,15 +31,26 @@
                <div class="row">
                         
                 <div class="row">
-                    {{#if Usuario}}
-                    <div class="card-body mt-4 ms-md-3 d-flex justify-content-center justify-content-md-start " style="border: 1px solid snow; border-radius: 5px;">
+                    {{#if Usuario.t_descricao}}
+                    <div class="card-body mt-4 ms-md-3 d-flex justify-content-center justify-content-md-start ">
                         <p>{{Usuario.t_descricao}}</p>
                     </div>
 
                     {{else}}
-                    <div class="col-12 text-center mt-5">
-                      <button class="btn  btn-primary">Adicionar Bibiografia</button>
-                    </div>
+
+                <div class="row">
+            <div class="col-12 text-center mt-5">
+                <i class="bi bi-person-fill " style="font-size:64px; line-height:64px;"></i>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 text-center mt-3">
+                <h4 class="">Você não adicionou nenhuma Biografia </h4>
+                  <a href="/Usuario/Editar" class="btn btn-primary">Adicionar Biografia</a>
+            </div>
+            </div>
+        </div>
 
                     {{/if}}
                 </div>

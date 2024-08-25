@@ -12,17 +12,12 @@ const html = require('remark-html');
 const port=process.env.PORT ? Number(process.env.PORT) : 3000;
 require('dotenv').config();
 require('./Modules/PassaporConfig')(passport);
-const {inject} =require('@vercel/analytics');
 app.use(cors({credentials: true}));
 app.use(express.json());
 app.use(express.urlencoded({
     extended: false
 }));
 
-//inject função do pacote, que adicionará o script de rastreamento
-inject({
-    mode: 'production',
-});
 
 //CONFIGURAÇÕES
 //configuração da sessao

@@ -36,13 +36,12 @@
                         
                                    <div class="form-group ">
                             <label for="biosuario">Biografia </label>
-                           <textarea name="dsc" class="form-control" placeholder="Fale um pouco sobre si (Campo Opicional)" id="biosuario"  style="height: 150px;"></textarea>
+                           <textarea name="dsc" class="form-control" placeholder="Fale um pouco sobre si (Campo Opcional)" id="biosuario"  style="height: 150px;"></textarea>
                           </div>
 
                           <div class="form-group ">
-                            <label for="inputTipoUsuario">Curso</label>
-                            <select id="inputTipoUsuario" class="form-control" name="cursos" required >
-                              <option>Selecione um curso</option>
+                            <label for="inputTipoUsuario">Selecione um curso</label>
+                            <select id="inputTipoUsuario" class="form-control" name="cursos" required  >
                               {{#each curso}}
                               <option value="{{n_idcurso}}">{{t_dsccurso}} </option>
                               {{/each}}

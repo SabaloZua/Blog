@@ -36,6 +36,6 @@
     "passport-local": "^1.0.0",
     "pg": "^8.11.3",
     "remark": "^13.0.0",
-    "remark-html": "^13.0.0"
+    "remark-html": "^13.0.2"
   }
 }
