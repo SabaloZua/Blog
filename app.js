@@ -91,7 +91,7 @@ hbs.registerHelper('getTimeAgo', conversorHora);
  // remark converte o conteudo markdown em html.use()-> recebe o pluging 
 hbs.registerHelper('Mark',(conteudo)=>{
    const comentario= remark()
-   .use(html)
+   .use(html,{sanitize:true} )
    .processSync(conteudo)
    .toString();
    return comentario

@@ -5,4 +5,4 @@ router.get("/",(req,res)=>{
 res.render("sobre");
 })
 
-module.exports= router
+module.exports= router;

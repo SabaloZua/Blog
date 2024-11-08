@@ -11,22 +11,16 @@ passport.use(new LocalStrategy(
             if (err) { return done(err); }
            
             if (results.rows.length ==  0) {
-                return done(null, false, { message: 'Esta conta não existe' });
+                return done(null, false, { message: 'Conta não encontrada! tente novamente' });
             }
             bcrypt.compare(password,results.rows[0].t_senha,(erro,iguais)=>{
                 if(iguais){
                     return done(null, results.rows[0]);
                 }else{
-                    return done(null, false, { message: 'Senha errda tente novamente' });
+                    return done(null, false, { message: 'Senha incorreta tente novamente' });
                 }
-            })
-
-            // if (results.rows[0].t_senha !== password) {
-            //    
-            // }
-           
+            }) 
         });
-      
     }
 ));
 

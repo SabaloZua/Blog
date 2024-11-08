@@ -12,6 +12,7 @@ router.get('/TerminarSessao', async(req,res)=>{
     // Remover os dados da sessão do banco de dados
     req.logOut((err)=>{
        console.log(err)
+       
     });
     try {
         await db.query('DELETE FROM sessions WHERE sid = $1', [req.sessionID]);

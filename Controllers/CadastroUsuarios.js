@@ -3,7 +3,7 @@ const { sendTestEmail } = require("../Modules/Email.js");
 const bcrypt = require('bcryptjs');
 //Controller que renderiza a Pagina Principal
 exports.PaginaCadastro = async (req, res) => {
-    let sqlquery = 'Select * from tb_curso';
+    const sqlquery = 'Select * from tb_curso';
 
     await client.query(sqlquery, (err, result) => {
         if (!err) {

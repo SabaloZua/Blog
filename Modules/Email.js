@@ -1,10 +1,6 @@
 require('dotenv').config()
 const nodemailer=require('nodemailer');
-// objecto que recebe os dados do email como o email e o nome do usuario
-const DadosEmail={
-    email_clinent:"",
-    nome_Client:""
-}
+
 // Metodo de criação do Email
 let transporter=nodemailer.createTransport({
     host: "gmail",
@@ -33,9 +29,9 @@ const sendTestEmail=async(DadosEmail)=>{
      <br>
     <p>Atenciosamente, Equipe da Astronautas,SA levando a tecnologia e inovação ao infinito e mais além 🚀</p> `
 }).then(msg=>{
-console.log(msg)
+console.log(msg);
 }).catch(err=>{
-    console.log(`erro ao enviar`+err)
+    console.log(`erro ao enviar`+err);
 })
 }
 module.exports = { sendTestEmail };
