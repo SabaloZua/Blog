@@ -130,32 +130,32 @@ hbs.registerHelper('Uppercase', function(str) {
 app.get('/', async (req, res) => {
    
     //Obtém o número da página atual da query string da URL. Se não estiver presente, assume 1 como padrão
-    // const page = parseInt(req.query.page) || 1;
+     const page = parseInt(req.query.page) || 1;
    
-    // //Obtém os posts para a página atual
+     //Obtém os posts para a página atual
    
-    // const posts = await Pots.getPosts(page);
+    const posts = await Pots.getPosts(page);
    
-    // const totalPosts = await Pots.getTotalPosts(); // Função para obter o total de posts
+    const totalPosts = await Pots.getTotalPosts(); // Função para obter o total de posts
    
-    // const totalPages = Math.ceil(totalPosts / 20); //  exibir 20 posts por página
-    // res.render('index', { posts, page, totalPages })
-    res.render('temporario',{style:[
-        {Link:"css/Login.css"},]});
+     const totalPages = Math.ceil(totalPosts / 20); //  exibir 20 posts por página
+     res.render('index', { posts, page, totalPages })
+   // res.render('temporario',{style:[
+     //   {Link:"css/Login.css"},]});
 });
 
 // Rotas
  app.use('/postagens', Post);
-// app.use('/Sobre-nos', Sobre);
-// app.use('/Usuario', Usuario);
-// app.use('/Login', Login);
-// app.use('/Perfil', Perfil);
-// app.use('/perfil', PerfilVist);
-// app.use('/Termos-uso',Termos);
-// app.use('/Denuciar',Denucias);
-// app.use('/admin',Admin);
+ app.use('/Sobre-nos', Sobre);
+ app.use('/Usuario', Usuario);
+ app.use('/Login', Login);
+ app.use('/Perfil', Perfil);
+ app.use('/perfil', PerfilVist);
+ app.use('/Termos-uso',Termos);
+ app.use('/Denuciar',Denucias);
+ app.use('/admin',Admin);
 
 
 app.listen(port, () => {
-    console.log("servidor ligado");
+    console.log("servidor ligado"+port);
 });
