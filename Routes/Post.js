@@ -38,8 +38,11 @@ router.get('/post/:id',Controller.getpost);
 router.post("/publicar",logado,Controller.publicar);
 
 router.post('/upload', upload.single('image'), async (req,res)=>{
+    console.log(req.file); // Log para verificar o arquivo recebido
+    if (!req.file || !req.file.buffer) {
+        return res.status(400).json({ error: "No file uploaded" });
+    }
     const StoregeRef=ref(storageFirebase,`Images/${req.file.originalname}`)
-    if(!req.file.buffer){throw new Error()}
     await uploadBytes(StoregeRef,req.file.buffer,{
         contentType:req.file.mimetype,
         
